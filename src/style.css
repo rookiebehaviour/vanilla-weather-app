@@ -5,6 +5,7 @@ body {
 h1 {
   color: #deb887;
   margin-bottom: 0;
+  text-transform: capitalize;
 }
 
 ul {
@@ -15,6 +16,7 @@ ul {
 li {
   list-style: none;
   line-height: 2;
+  text-transform: capitalize;
 }
 
 small a {
