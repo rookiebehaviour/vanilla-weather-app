@@ -17,17 +17,49 @@ li {
   line-height: 2;
 }
 
+small a {
+  color: #b8860b;
+}
+
 .wrapper {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 15px auto;
 }
 
 .app {
   background: #3e4e22;
   color: white;
   max-width: 600px;
-  margin: 15px auto;
+  margin: 0 auto;
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 5px solid #b8860b;
+}
+
+.flex-box {
+  display: flex;
+}
+
+.current-temperature {
+  line-height: 1;
+}
+
+.current-temperature strong {
+  font-size: 55px;
+}
+
+.units {
+  position: relative;
+  font-size: 18px;
+  top: -26px;
+}
+
+.units a {
+  text-decoration: none;
+  color: #deb887;
+}
+
+.units a:hover {
+  transition: all 150ms ease-in-out;
+  color: white;
 }
