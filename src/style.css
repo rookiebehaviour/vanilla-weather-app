@@ -19,6 +19,11 @@ li {
   text-transform: capitalize;
 }
 
+form {
+  display: block;
+  margin: 0 auto;
+}
+
 small a {
   color: #b8860b;
 }

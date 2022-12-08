@@ -23,6 +23,23 @@
     <div class="container">
       <div class="wrapper">
         <div class="app">
+          <div class="row">
+            <div class="col-9">
+              <form id="search-form"class="mb-3">
+                <input
+                  type="search"
+                  placeholder="Enter city name"
+                  class="form-control"
+                  id="search-box"
+                  autocomplete="off"
+                  autofocus
+                />
+                </div>
+                <div class="col-3">
+                <input type="submit" value="Search" class="btn btn-primary w-100"/>
+              </form>
+            </div>
+          </div>
           <h1 id="city"></h1>
           <ul>
             <li>Last updated: <span id="date"></span></li>
@@ -38,6 +55,7 @@
                 <span class="units">°C |<a href="#"> °F</a></span>
               </div>
             </div>
+
             <div class="col-6">
               <ul>
                 <li id="feels-like"></li>

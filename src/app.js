@@ -63,4 +63,22 @@ function displayTemp(response) {
   iconElement.setAttribute("alt", response.data.condition.description);
 }
 
-axios.get(url).then(displayTemp);
+function search(city) {
+  let apiKey = "f10daba5t5ce3fc3ed35o46ebd038a42";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${unit}&key=${apiKey}`;
+
+  axios.get(url).then(displayTemp);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchBoxElement = document.querySelector("#search-box");
+  search(searchBoxElement.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+// Default search if no city entered
+
+search("Cincinnati");
