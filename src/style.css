@@ -23,6 +23,10 @@ small a {
   color: #b8860b;
 }
 
+#windspeed {
+  text-transform: lowercase;
+}
+
 .wrapper {
   max-width: 600px;
   margin: 15px auto;
