@@ -1,5 +1,5 @@
 let apiKey = "f10daba5t5ce3fc3ed35o46ebd038a42";
-let city = "Middletown";
+let city = "Cincinnati";
 let unit = "metric";
 let url = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${unit}&key=${apiKey}`;
 
@@ -53,6 +53,14 @@ function displayTemp(response) {
 
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+
+  let iconElement = document.querySelector("#icon");
+  let icon = response.data.condition.icon;
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 axios.get(url).then(displayTemp);
