@@ -28,6 +28,10 @@ small a {
   color: #b8860b;
 }
 
+#search-box {
+  border: none;
+}
+
 #windspeed {
   text-transform: lowercase;
 }
@@ -49,6 +53,18 @@ small a {
 
 .flex-box {
   display: flex;
+}
+
+.btn {
+  background: #b8860b;
+  border-color: #deb887;
+  transition: all 150ms ease-in-out;
+}
+
+.btn:hover {
+  background: #deb887;
+  color: black;
+  border-color: #b8860b;
 }
 
 .current-temperature {
