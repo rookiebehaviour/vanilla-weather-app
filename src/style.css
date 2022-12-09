@@ -3,6 +3,7 @@ body {
 }
 
 h1 {
+  font-size: 35px;
   color: #deb887;
   margin-bottom: 0;
   text-transform: capitalize;
@@ -14,14 +15,13 @@ ul {
 }
 
 li {
+  font-size: 18px;
   list-style: none;
   line-height: 2;
-  text-transform: capitalize;
 }
 
-form {
-  display: block;
-  margin: 0 auto;
+li::first-letter {
+  text-transform: capitalize;
 }
 
 small a {
@@ -55,8 +55,13 @@ small a {
   line-height: 1;
 }
 
+.current-temperature .active {
+  color: white;
+  cursor: default;
+}
+
 .current-temperature strong {
-  font-size: 55px;
+  font-size: 60px;
 }
 
 .units {

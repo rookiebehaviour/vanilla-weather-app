@@ -29,33 +29,28 @@ function formatDate(timestamp) {
 }
 
 function displayTemp(response) {
-  console.log(response.data);
-  let temperature = Math.round(response.data.temperature.current);
+  celciusTemp = response.data.temperature.current;
+
+  let temperature = Math.round(celciusTemp);
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = `${temperature}`;
-
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
-
   let weatherElement = document.querySelector("#weather");
-  weatherElement.innerHTML = response.data.condition.description;
-
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = Math.round(response.data.temperature.feels_like);
-  feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
-
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
-
   let wind = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#windspeed");
-  windSpeed.innerHTML = `Wind: ${wind} km/h`;
-
   let date = document.querySelector("#date");
-  date.innerHTML = formatDate(response.data.time * 1000);
-
   let iconElement = document.querySelector("#icon");
   let icon = response.data.condition.icon;
+
+  temperatureElement.innerHTML = `${temperature}`;
+  cityElement.innerHTML = response.data.city;
+  weatherElement.innerHTML = response.data.condition.description;
+  feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
+  humidityElement.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
+  windSpeed.innerHTML = `Wind: ${wind} km/h`;
+  date.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
@@ -76,9 +71,33 @@ function handleSubmit(event) {
   search(searchBoxElement.value);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelciusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheit.classList.remove("active");
+  celcius.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celciusTemp);
+}
+
+let celciusTemp = null;
+
+// Default search if no city entered
+search("Cincinnati");
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-// Default search if no city entered
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", displayFahrenheitTemp);
 
-search("Cincinnati");
+let celcius = document.querySelector("#celcius-link");
+celcius.addEventListener("click", displayCelciusTemp);
