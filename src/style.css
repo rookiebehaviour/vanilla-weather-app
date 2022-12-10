@@ -86,16 +86,6 @@ small a {
   top: -26px;
 }
 
-.units a {
-  text-decoration: none;
-  color: #deb887;
-}
-
-.units a:hover {
-  transition: all 150ms ease-in-out;
-  color: white;
-}
-
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
