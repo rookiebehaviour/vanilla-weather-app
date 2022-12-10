@@ -1,11 +1,12 @@
 let apiKey = "f10daba5t5ce3fc3ed35o46ebd038a42";
 let city = "Cincinnati";
-let unit = "metric";
+let unit = "imperial";
 let url = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${unit}&key=${apiKey}`;
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
+  console.log(hours);
   let minutes = date.getMinutes();
   let days = [
     "Sunday",
@@ -71,9 +72,8 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "f10daba5t5ce3fc3ed35o46ebd038a42";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=metric&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=${unit}&key=${apiKey}`;
 
   axios.get(apiUrl).then(displayForecast);
 }
@@ -99,7 +99,7 @@ function displayTemp(response) {
   weatherElement.innerHTML = response.data.condition.description;
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
   humidityElement.innerHTML = `Humidity: ${response.data.temperature.humidity}%`;
-  windSpeed.innerHTML = `Wind: ${wind} km/h`;
+  windSpeed.innerHTML = `Wind: ${wind} mph`;
   date.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute(
     "src",
@@ -123,33 +123,8 @@ function handleSubmit(event) {
   search(searchBoxElement.value);
 }
 
-function displayFahrenheitTemp(event) {
-  event.preventDefault();
-  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function displayCelciusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  fahrenheit.classList.remove("active");
-  celcius.classList.add("active");
-  temperatureElement.innerHTML = Math.round(celciusTemp);
-}
-
-let celciusTemp = null;
-
 // Default search if no city entered
 search("Cincinnati");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", displayFahrenheitTemp);
-
-let celcius = document.querySelector("#celcius-link");
-celcius.addEventListener("click", displayCelciusTemp);
