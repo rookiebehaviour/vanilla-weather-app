@@ -6,7 +6,6 @@ let url = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${unit
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
-  console.log(hours);
   let minutes = date.getMinutes();
   let days = [
     "Sunday",
